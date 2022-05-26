@@ -1,0 +1,18 @@
+<pre><h1>TEST_WITH_INPUT</h1>
+
+<h2>await page.type('#user_login', 'Kris123')</h2>
+
+
+test.only('Working with inputs', async ({ page }) => {
+  await page.goto('http://zero.webappsecurity.com/index.html')
+  await page.click('#signin_button')
+
+  await page.type('#user_login', 'Kris123')
+  await page.type('#user_password', 'fakePassword123')
+
+  await page.click('text=Sign in')
+
+  await expect(page.locator('.alert-error')).toContainText('password')
+})
+
+</pre>

@@ -1,0 +1,44 @@
+<pre>
+<h1>PLAYWRIGHT_CONFIGURATION</h1>
+
+<h2>Run: npx playwright test --config=playwright.config.ts --project=Webkit</h2>
+
+
+file name: playwright.config.ts
+= = = = = = = = = = = = = = = = = = = = = = = = 
+
+import { PlaywrightTestConfig } from '@playwright/test'
+
+const config: PlaywrightTestConfig = {
+  timeout: 60000,
+  retries: 0,
+  use: {
+    headless: true,
+    viewport: { width: 1280, height: 720 },
+    actionTimeout: 15000,
+    ignoreHTTPSErrors: true,
+    video: 'off',
+    screenshot: 'off',
+  },
+  projects: [
+    {
+      name: 'Chromium',
+      use: { browserName: 'chromium' },
+    },
+    {
+      name: 'Firefox',
+      use: { browserName: 'firefox' },
+    },
+    {
+      name: 'webkit',
+      use: { browserName: 'webkit' },
+    },
+  ],
+}
+
+export default config
+
+= = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+</pre>

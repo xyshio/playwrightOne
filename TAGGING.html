@@ -1,0 +1,27 @@
+<pre><h1>TAGGING @myTag</h1>
+
+Tag should:
+1. have at (@) sign at the beginning of tag
+2. be at the end of description
+Tag can:
+1. be more than one
+
+
+test('Test with Assertions @assertions', async ({ page }) => {
+  await page.goto('http://www.example.com')
+  await expect(page).toHaveURL('http://www.example.com')
+  await expect(page).toHaveTitle('Example Domain')
+})
+
+
+So to run such test you can use:
+
+>> npx playwright test --grep @assertions
+
+Too runn all test without this tag:
+
+>> npx playwright test --grep-invert @assertions
+
+
+
+</pre>

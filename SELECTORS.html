@@ -1,0 +1,27 @@
+<pre>
+<h1>SELECTORS </h1>
+
+
+test.only("Selectors", async ({page})=>{
+    // text
+    await page.click('text=Some text')
+
+    // Css selector
+    await page.click('button') // tag selector
+    await page.click('#button_submit') // id selector
+    await page.click('.btn') // class selector
+
+    // Only visible css selector
+    await page.click('.submit-btn:visible') // class selector
+
+    // Combinations
+    await page.click('#username .first') // class selector
+
+    // XPATH
+    await page.click("//button[@id='klover']")
+
+});
+
+
+
+</pre>

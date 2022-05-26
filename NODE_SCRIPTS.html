@@ -1,0 +1,31 @@
+<pre>
+<h1>NODE_SCRIPTS</h1>
+
+>> in file package.json looks into:
+
+
+  "scripts": {
+    "test": "echo "Error: no test specified" && exit 1"
+  },
+
+
+>> and change into:
+
+  "scripts": {
+    "test-chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "test-firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+    "test-webkit": "playwright test --config=playwright.config.ts --project=Webkit"
+  },
+
+
+>> then we run in console like: 
+<h2>npm run test-chrome</h2>
+
+
+if you want to run this shortcut with extra param, f.ex headed, run: 
+<h2>npm run test-webkit -- --headed</h2>
+
+
+
+
+</pre>

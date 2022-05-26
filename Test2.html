@@ -1,0 +1,25 @@
+<pre>
+
+import { test, expect } from '@playwright/test'
+
+test('Simple basic test', async ({ page }) => {
+  // Here goes the tests code
+  await page.goto('http://www.example.com')
+  const pageTitle = await page.locator('h1')
+  await expect(pageTitle).toContainText('Example Domain -FI')
+})
+
+test.only('Clicking on elements', async ({ page }) => {
+  await page.goto('http://zero.webappsecurity.com/index.html')
+  await page.click('#signin_button')
+  await page.click('text=Sign in')
+
+  const errorMessage = await page.locator('.alert-error')
+  const errorText = 'password are wrong'
+  const err =
+    '>>> Lokator [' + errorMessage + '] nie zawiera [' + errorText + '] !!!'
+  await expect(page.locator('.alert-exrror'), err).toContainText(errorText)
+})
+
+
+</pre>

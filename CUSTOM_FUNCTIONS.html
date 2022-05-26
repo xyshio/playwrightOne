@@ -1,0 +1,34 @@
+<pre>
+
+<h1>CUSTOM_FUNCTIONS</h1>
+
+
+file name: in root: helpers.ts
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+export async function loadHomepage(page) {
+  await page.goto('https://www.example.com')
+}
+
+export async function assertTitle(page) {
+  await page.waitForSelector('h1')
+}
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+
+>> then import in yout test file like: 
+
+import { loadHomepage, assertTitle } from '../helpers'
+
+>> and use in test like:
+
+
+test.only('Custom Helpers', async ({ page }) => {
+  await loadHomepage(page)
+  await assertTitle(page)
+})
+
+
+
+
+
+</pre>

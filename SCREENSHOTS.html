@@ -1,0 +1,16 @@
+<pre><h1>SCREENSHOTS</h1>
+
+
+test('Screenshot', async ({ page }) => {
+  // 1. step is loading website
+  await page.goto('https://example.com/')
+
+  // 2. Take the screenshot of full page
+  await page.screenshot({ path: 'screenshot_whole.png', fullPage: true })
+
+  // 3. Create single element screenshot
+  const element = await page.$('h1')
+  await element.screenshot({ path: 'screenshot_single.png' })
+})
+
+</pre>

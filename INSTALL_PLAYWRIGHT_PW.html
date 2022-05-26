@@ -1,0 +1,34 @@
+<pre>
+
+<h1>PLAYWRIGHT:</h1>
+
+>> npm init
+>> npm install prettier
+-> .prettierrc => 
+    {
+        "semi": false,
+        "singleQuote": true
+    }
+>> npm install @playwright/test
+>> npx playwright install
+
+
+
+create your test in /tests/example.spec.ts
+
+import { test, expect } from '@playwright/test'
+
+test('Simple basic test', async ({ page }) => {
+  // Here goes the tests code
+  await page.goto('https://www.exmple.com')
+  const paheTitle = await page.locator('h1')
+  await expect(paheTitle).toContainText('Example Domain')
+})
+
+
+>> npx playwright test
+
+
+
+
+</pre>

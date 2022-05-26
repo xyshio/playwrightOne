@@ -1,0 +1,21 @@
+<pre style="white-space: pre-line;">
+<h1>ANNOTATIONS</h1>
+
+>> test.skip('Test Name', async ({page})=> {})  // cause that this test will be ignored
+
+>> test.only('Test Name', async ({page})=> {}) // only this test will by run, other will be ignored. There might be few only's
+
+>> test.description() // creating test suite (group of tests) - not asynchroneus - so no async while calling :
+
+
+test("Group of two test", () => {
+    test('Test Name 1 ', async ({page})=> {
+      // come content
+    })
+    test('Test Name 2 ', async ({page})=> {
+      // come content
+    })
+})
+
+
+</pre>

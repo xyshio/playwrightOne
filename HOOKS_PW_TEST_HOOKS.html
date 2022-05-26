@@ -1,0 +1,33 @@
+<pre><h1>HOOKS_PW_TEST_HOOKS - Before, After</h1>
+
+- test.beforeAll
+- test.beforeEach
+- test.afterEach
+- test.afterAll
+
+
+test.describe.only('Hooks', () => {
+  let pageTitle
+  test.beforeEach(async ({ page }) => {
+    await page.goto('http://www.example.com')
+    pageTitle = await page.locator('h1')
+  })
+
+  test.afterEach(async ({ page }) => {
+    //
+  })
+
+  test('Simple basic test', async ({ page }) => {
+    await expect(pageTitle).toContainText('Example Domain')
+  })
+
+  test('Simple second test', async ({ page }) => {
+    await expect(pageTitle).toContainText('Example Domain')
+  })
+})
+
+
+
+
+
+</pre>
