@@ -32,7 +32,37 @@ test.describe.parallel('API Testing', () => {
 
 })
 
+<h2>Parsing responses</h2>
 
+<span class="com">
+
+{
+    "data": {
+        "id": 2,
+        "email": "janet.weaver@reqres.in",
+        "first_name": "Janet",
+        "last_name": "Weaver",
+        "avatar": "https://reqres.in/img/faces/2-image.jpg"
+    },
+    "support": {
+        "url": "https://reqres.in/#support-heading",
+        "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+    }
+}
+
+</span>
+
+
+
+
+   const response = await request.get(`$(baseUrl)/users/2`) // call for user with id = 2
+   expect(response.status().toBe(200))
+   const responseBody = JSON.parse(await response.text())
+   console.log(responseBody()) // to print out response as json
+   expect(responseBody.data.id.toBe(2)) // assert for user with id = 2
+   expect(responseBody.data.first_name.toBe('Janet') <span class="warn">// here .toContainText will not work !!!</span>
+   expect(responseBody.data.last_name.toBe('Weaver')
+   expect(responseBody.data.email.toByTruthy() <span class="info"> // dont care what value is, <BR>just want to check if the value is true in a boolean context. <BR>JS has 6 falsy values: [false|0|''|null|undefined|NaN], others are truthy</span>
 
 
 </pre>
