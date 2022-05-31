@@ -2,6 +2,14 @@
 <pre><h1>TIPS_N_TRICKS</h1>
 
 <h2>Test Info</h2>
+test.describe.only('Tips & Tricks section', () => {
+ test('Test Info Object', async({ page }, <span class="info">testInfo</span>) => {
+   await page.goto('https://www.example.com')
+   console.log(testInfo)
+   console.log(testInfo.expectedStatus)
+   console.log(testInfo.title)
 
+ })
+})
 
 </pre>
