@@ -1,9 +1,10 @@
+<link rel="stylesheet" href="playwright/style.css">
 <pre>
 
 <h1>CUSTOM_FUNCTIONS</h1>
 
 
-file name: in root: helpers.ts
+<h2>file name: in root: helpers.ts</h2>
 = = = = = = = = = = = = = = = = = = = = = = = = = 
 export async function loadHomepage(page) {
   await page.goto('https://www.example.com')
@@ -15,11 +16,11 @@ export async function assertTitle(page) {
 
 = = = = = = = = = = = = = = = = = = = = = = = = = 
 
->> then import in yout test file like: 
+<span class="com"> then import in yout test file like: </span>
 
 import { loadHomepage, assertTitle } from '../helpers'
 
->> and use in test like:
+<span class="com"> and use in test like: </span>
 
 
 test.only('Custom Helpers', async ({ page }) => {

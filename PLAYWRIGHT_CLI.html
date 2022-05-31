@@ -1,33 +1,34 @@
+<link rel="stylesheet" href="playwright/style.css">
 <pre>
 
 <h1>Command line callers</h1>
 
-<h3> normal </h3>
+<h2> normal </h2>
 >> npx playwright test // by default is headless with defalt browser
 
-<h4> visual mode (headed) -> non headless </h4>
+<h2> visual mode (headed) -> non headless </h2>
 >> npx playwright test --headed // visual mode
 
-<h4> specifygin browser types </h4>
+<h2> specifygin browser types </h2>
 >> npx playwright test --browser=firefox // [chrome|firefox|webkit]
 >> npx playwright test --browser=all // [chrome|firefox|webkit]
 
-<h4> browser with visual mode (headed) </h4>
+<h2> browser with visual mode (headed) </h2>
 >> npx playwright test --headed --browser=webkit
 
-<h4> with specific path of the test </h4>
+<h2> with specific path of the test </h2>
 >> npx playwright test tests/example.spec.ts
 
 
-<h4> Running tagged tests - "Some description @myTag" </h4>
+<h2> Running tagged tests - "Some description @myTag" </h2>
 >> npx playwright test --grep @myTag
 
 
-<h3>Calling with specific config file</h3>
+<h2>Calling with specific config file</h2>
 >> npx playwright test --config=playwright.config.ts --project=Firefox
 
 
-<h3>Using reporters</h3>
+<h2>Using reporters</h2>
 >> npx playwright test --config=playwright.config.ts --project=Chromium --reporter=line
 >> npx playwright test --config=playwright.config.ts --project=Chromium --reporter=list (by default)
 >> npx playwright test --config=playwright.config.ts --project=Chromium --reporter=dot

@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="playwright/style.css">
+<pre><h1>SCRENSHOT_VIDEO_ON_FAIL</h1>
+
+<span class="com">in file playwright.config.ts:</span>
+
+
+  use: {
+    headless: true,
+    viewport: { width: 1280, height: 720 },
+    actionTimeout: 15000,
+    ignoreHTTPSErrors: true,
+    <span style="background-color:yellow">video: 'retain-on-failure',</span>
+    <span style="background-color:yellow">screenshot: 'only-on-failure',</span>
+  },
+
+
+</pre>

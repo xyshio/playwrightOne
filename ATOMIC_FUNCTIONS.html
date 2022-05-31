@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="playwright/style.css" />
+<pre><h1>ATOMIC FUNCTIONS</h1>
+
+
+<h2>ACTIONS</h2>
+<h3>.click()</h3>
+- await this.payeeDetailButton.click()
+- await page.locator('#wp-submit').click()
+
+<h3>.type(value)</h3>
+- await this.dateInput.type('2021-11-09')
+- await page.locator('#user_pass').type(password)
+
+<h3>.selectOption(value)</h3>
+- await this.accountSelectbox.selectOption('6')
+- await this.payeeSelectbox.selectOption('apple')
+
+<h2>EXPECTERS</h2>
+- await expect(this.page.locator('#wp-admin-bar-my-account')).toContainText('Witaj')
+- await expect(this.message).toBeVisible()
+- await expect(this.nameInput).toBeEmpty()
+->> const loanAccount = await page.locator('#all_transactions_for_account tbody tr')
+- await expect(loanAccount).toHaveCount(2)
+
+<h2>WAITERS</h2>
+- await page.waitForTimeout(1000)
+
+<h2>ASSERTIONS</h2>
+- await paymentPage.assertSuccessMessage()
+
+<h2>KEYBOARD SIMULATORS</h2>
+- await page.keyboard.press('Backspace')
+
+
+</pre>

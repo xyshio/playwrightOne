@@ -1,0 +1,22 @@
+h1 {
+border:1px black solid;
+background-color: navy;
+margin-bottom:2px;
+color:white;
+padding:5px;
+}
+
+
+h2 {
+border:1px black solid;
+background-color: teal;
+margin-bottom:2px;
+color:white;
+padding:5px;
+}
+pre {
+white-space: word-wrap;
+}
+.com {
+background-color:yellow;
+}

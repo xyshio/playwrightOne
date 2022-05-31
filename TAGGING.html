@@ -1,9 +1,10 @@
+<link rel="stylesheet" href="playwright/style.css">
 <pre><h1>TAGGING @myTag</h1>
 
-Tag should:
+<h2>Tag should:</h2>
 1. have at (@) sign at the beginning of tag
 2. be at the end of description
-Tag can:
+<h2>Tag can:</h2>
 1. be more than one
 
 
@@ -14,11 +15,11 @@ test('Test with Assertions @assertions', async ({ page }) => {
 })
 
 
-So to run such test you can use:
+<span class="com">So to run such test you can use:</span>
 
 >> npx playwright test --grep @assertions
 
-Too runn all test without this tag:
+<span class="com">Too runn all test without this tag:</span>
 
 >> npx playwright test --grep-invert @assertions
 

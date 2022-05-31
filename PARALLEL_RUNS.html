@@ -1,23 +1,14 @@
 <link rel="stylesheet" href="playwright/style.css">
 <pre>
-<h1>HOOKS_PW_TEST_HOOKS - Before, After</h1>
+<h1>PARALLEL_RUNS</h1>
 
-<ul>
-<li>test.beforeAll</li>
-<li>test.beforeEach</li>
-<li>test.afterEach</li>
-<li>test.afterAll</li>
-</ul>
+<h2>This has to be implemented for groupped tests - like test suites</h2>
 
-test.describe.only('Hooks', () => {
+test.describe.parallel.only('Parallel Runs', () => {
   let pageTitle
   test.beforeEach(async ({ page }) => {
     await page.goto('http://www.example.com')
     pageTitle = await page.locator('h1')
-  })
-
-  test.afterEach(async ({ page }) => {
-    //
   })
 
   test('Simple basic test', async ({ page }) => {
@@ -28,9 +19,6 @@ test.describe.only('Hooks', () => {
     await expect(pageTitle).toContainText('Example Domain')
   })
 })
-
-
-
 
 
 </pre>

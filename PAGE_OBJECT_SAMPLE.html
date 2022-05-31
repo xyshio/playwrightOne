@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="playwright/style.css">
+
+<pre><h1>PAGE OBJECT SAMPLE</h1>
+
+<h2>page object class -> file: ./page-objects/AbstractPage.ts </h2>
+import { Page } from '@playwright/test'
+
+export class AbstractPage {
+  readonly page: Page
+
+  constructor(page: Page) {
+    this.page = page
+  }
+
+  async wait(time) {
+    await this.page.waitForTimeout(time)
+  }
+}
+
+<h2>page object class -> file: ./page-objects/LoginPage.ts</h2>
+import { expect, Locator, Page } from '@playwright/test'
+import { AbstractPage } from './AbstractPage'
+
+export class LoginPage extends AbstractPage {
+  <span class="com">// Define selectors</span>
+  // readonly page: Page
+  readonly usernameInput: Locator
+  readonly passwordInput: Locator
+  readonly submitButton: Locator
+  readonly errorMessage: Locator
+
+  <span class="com">// Init selectors using constructor</span>
+  constructor(page: Page) {
+    // this.page = page
+    super(page)
+    this.usernameInput = page.locator('#user_login')
+    this.passwordInput = page.locator('#user_password')
+    this.submitButton = page.locator('text=Sign in')
+    this.errorMessage = page.locator('.alert-error')
+  }
+
+  <span class="com">// Define login page methods</span>
+  async login(username: string, password: string) {
+    await this.usernameInput.type(username)
+    await this.passwordInput.type(password)
+    await this.submitButton.click()
+  }
+
+  async assertErrorMessage() {
+    await expect(this.errorMessage).toContainText(
+      'Login and/or password are wrong'
+    )
+  }
+}
+
+<h2>test class-> file: ./tests/e2e/e2e-login.spec.ts</h2>
+
+import { test, expect } from '@playwright/test'
+import { LoginPage } from '../../page-objects/LoginPage'
+import { HomePage } from '../../page-objects/HomePage'
+
+test.describe.parallel.only('Login / Logout Flow', () => {
+  let loginPage: LoginPage
+  let homePage: HomePage
+
+  <span class="com">// Before Hook</span>
+  test.beforeEach(async ({ page }) => {
+    loginPage = new LoginPage(page)
+    homePage = new HomePage(page)
+
+    await homePage.visit()
+  })
+
+  <span class="com">// Negative Scenario</span>
+  test('Negative Scenario for login', async ({ page }) => {
+    await homePage.clickOnSignIn()
+    await loginPage.login('invalid username', 'invalid password')
+    await loginPage.wait(3000)
+    await loginPage.assertErrorMessage()
+  })
+
+  <span class="com">// Positive Scenario + Logout</span>
+  test('Positive Scenario for login + logout', async ({ page }) => {
+    await homePage.clickOnSignIn()
+    await loginPage.login('username', 'password')
+
+    const accountSummaryTab = await page.locator('#account_summary_tab')
+    await expect(accountSummaryTab).toBeVisible()
+
+    await page.goto('http://zero.webappsecurity.com/logout.html')
+    await expect(page).toHaveURL('http://zero.webappsecurity.com/index.html')
+  })
+})
+
+
+
+
+
+</pre>

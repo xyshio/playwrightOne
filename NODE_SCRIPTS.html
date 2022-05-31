@@ -1,7 +1,8 @@
+<link rel="stylesheet" href="playwright/style.css">
 <pre>
 <h1>NODE_SCRIPTS</h1>
 
->> in file package.json looks into:
+<span class="com"> In file package.json looks into:</span>
 
 
   "scripts": {
@@ -9,20 +10,22 @@
   },
 
 
->> and change into:
+<span class="com"> and change into:</span>
 
   "scripts": {
     "test-chrome": "playwright test --config=playwright.config.ts --project=Chromium",
     "test-firefox": "playwright test --config=playwright.config.ts --project=Firefox",
-    "test-webkit": "playwright test --config=playwright.config.ts --project=Webkit"
+    "test-webkit": "playwright test --config=playwright.config.ts --project=Webkit",
+    "test-e2e": "playwright test --config=e2e.config.ts --project=Chromium"
   },
 
 
->> then we run in console like: 
+<span class="com"> then we run in console like: </span>
+
 <h2>npm run test-chrome</h2>
 
 
-if you want to run this shortcut with extra param, f.ex headed, run: 
+<span class="com">if you want to run this shortcut with extra param, f.ex headed, run: </span>
 <h2>npm run test-webkit -- --headed</h2>
 
 

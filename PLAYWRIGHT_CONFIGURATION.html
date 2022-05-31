@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="playwright/style.css">
 <pre>
 <h1>PLAYWRIGHT_CONFIGURATION</h1>
 
@@ -12,6 +13,7 @@ import { PlaywrightTestConfig } from '@playwright/test'
 const config: PlaywrightTestConfig = {
   timeout: 60000,
   retries: 0,
+  testDir: 'tests/e2e', <span class="com"> // this is if you want to point to specific tests directory </span>
   use: {
     headless: true,
     viewport: { width: 1280, height: 720 },
