@@ -20,9 +20,12 @@ white-space: word-wrap;
 .com {
 background-color:yellow;
 }
+
 .info {
 background-color:lime;
 }
+
 .warn {
-background-color: lightred;
+background-color: red;
+color:white;
 }
