@@ -33,4 +33,15 @@ test.describe.only('Tips & Tricks section', () => {
 in cli add: --retries=3
 It will always retries when test fails.. When test passed, then retries is nt executed
 
+<h2>Mouse Movement Simulation</h2>
+...
+ test('Mouse Movement', async({ page }) => {
+   await page.goto('https://www.example.com')
+   await page.mouse.move(0, 0)
+   await page.mouse.down()
+   await page.mouse.move(0, 100)
+   await page.mouse.up()
+ })
+...
+
 </pre>
