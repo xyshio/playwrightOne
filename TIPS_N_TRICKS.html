@@ -22,14 +22,15 @@ test.describe.only('Tips & Tricks section', () => {
  })
 ...
 
-<h2>Fixme Annotation</h2>
+<h2>Fixme Annotation - marking problems of tests itself</h2>
 ...
  test('Test Fixme Annotation', async({ page, <span class="info">browserName</span> }) => {
   test.fixme(browserName === 'chromium', 'Test is not stable, needs revision')
    await page.goto('https://www.example.com')
  })
 ...
-
-
+<h2>Retries</h2>
+in cli add: --retries=3
+It will always retries when test fails.. When test passed, then retries is nt executed
 
 </pre>
