@@ -3,13 +3,33 @@
 
 <h2>Test Info</h2>
 test.describe.only('Tips & Tricks section', () => {
+...
  test('Test Info Object', async({ page }, <span class="info">testInfo</span>) => {
    await page.goto('https://www.example.com')
    console.log(testInfo)
    console.log(testInfo.expectedStatus)
    console.log(testInfo.title)
-
  })
+...
+
 })
+
+<h2>Test Skip Browser</h2>
+...
+ test('Test Skip Browser', async({ page, <span class="info">browserName</span> }) => {
+  test.skip(browserName === 'chromium', 'Feature not ready in chromium')
+   await page.goto('https://www.example.com')
+ })
+...
+
+<h2>Fixme Annotation</h2>
+...
+ test('Test Fixme Annotation', async({ page, <span class="info">browserName</span> }) => {
+  test.fixme(browserName === 'chromium', 'Test is not stable, needs revision')
+   await page.goto('https://www.example.com')
+ })
+...
+
+
 
 </pre>
