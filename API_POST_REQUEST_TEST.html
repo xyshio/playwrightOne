@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="playwright/style.css" />
 <pre><h1>API POST REQUEST TEST</h1>
 
+
+ <h2>POST REQUEST - NEW USER</h2>
 test('POST Request - Create New User', async ({ request }) => {
  const response = await request.post(`${baseUrl}/user`, {
    data: {
@@ -13,5 +15,34 @@ test('POST Request - Create New User', async ({ request }) => {
   expect(responseBody.createdAt).toBeTruthy()
 
 })
+
+ <h2>POST REQUEST - LOGIN </h2>
+test('POST Request - Login', async ({ request }) => {
+ const response = await request.post(`${baseUrl}/login`, {
+   data: {
+        email: 'eve.ho@op.pl',
+        password: 'secret123'
+         },
+ })
+
+  const responseBody = JSON.parse(await response.text()) 
+  extect(await response.status().toBe(200)) 
+  expect(responseBody.token).toBeTruthy()
+})
+
+
+ <h2>POST REQUEST - LOGIN FAILED</h2>
+test('POST Request - Login Failed', async ({ request }) => {
+ const response = await request.post(`${baseUrl}/login`, {
+   data: {
+        email: 'fakeEmail@fake.com'
+         },
+ })
+
+  const responseBody = JSON.parse(await response.text()) 
+  extect(await response.status().toBe(400)) 
+  expect(responseBody.error).toBe("Missing password")
+})
+
 
 </pre>
