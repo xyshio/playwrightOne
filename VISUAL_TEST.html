@@ -1,36 +1,46 @@
 <link rel="stylesheet" href="playwright/style.css" />
-<pre><h1>VISUAL TEST</h1>
+<pre><h1>PAGE OBJECT FOR VISUAL TESTING</h1>
 
-- preconfig: set video and screenshot off in config file
+<h2>In LoginPage.ts </h2>
+<h3> create element for login form as a whole </h3>
 
-<h2>FULL SCREEN TEST</h2>
-<h3>file: visual.spec.ts</h3>
+ -> readonly loginForm: Locator
+ -> (in constructor) this.loginForm = page.locator('#login_form')
 
-import { test, expect } from '@playwright/test'
+<h3> add methods snapshotLoginForm and snapshotErrorMessage </h3>
 
-test.describe('Visual Regression Testing Example', ()=>{ // tip: describe is not asynchroneus !!
-  test("Full screen shanpshot", async ({ page })=>{
-    await page.goto('http://www.example.com')
-    expect(await page.screenshot()).toMatchSnapshot('homepage.png')
+  async snapshotLoginForm() {
+    await expect(this.loginForm.screenshot()).toMatchSnapshot('login-form.png')
+  }
+
+  async snapshotErrorMessage() {
+    await expect(this.loginForm.screenshot()).toMatchSnapshot('login-error.png')
+  }
+
+<h2>Create test file: login-visual.spec.ts </h2>
+
+import { test } from '@playwright/test'
+import { HomePage } from '../../page-objects/HomePage'
+import { LoginPage } from '../../page-objects/LoginPage'
+
+test.describe("Login Page Visual Test", () => {
+  let loginPage: LoginPage
+  let homePage: HomePage
+
+  test.beforeEach(async ({ page }) => {
+    await homepage.visit()
+    await homepage.clickOnSignIn()
   })
+
+  test("Login Form", async({ page }) => {
+    await loginPage.snapshotLoginForm();
+  })
+
+  test("Login Form Error message", async({ page }) => {
+    await loginPage.login("FakeUser", "FakePassword")
+    await loginPage.snapshotErrorMessage();
+  })
+
 })
-
-<span class="com">TIP: For the first time the error is happening because picture not exists! But automatically in that case picture is created, so for the 2nd time this will pass</span><BR>
-<span class="com">TIP: You have to generate snapshot separately per browser type</span>
-
-
-<h2>SELECTED AREA SCREEN TEST</h2>
-<h3>file: visual.spec.ts</h3>
-
-... 
-
-  test("Seleted area screen shanpshot", async ({ page })=>{
-    await page.goto('http://www.example.com')
-    const pageElement = await page.$('h1')
-    expect(await pageElement.screenshot()).toMatchSnapshot('page-title.png')
-  })
-
-
-...
 
 </pre>
