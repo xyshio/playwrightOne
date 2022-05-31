@@ -44,4 +44,23 @@ It will always retries when test fails.. When test passed, then retries is nt ex
  })
 ...
 
+<h2>Multiple Browsers</h2>
+...
+ test('Multiple browsers tab inside 1 Brower', async({ <span class="info">browser</span> }) => {
+   const context = await browser.newContext()
+   const page1 = await context.newPage()
+   const page2 = await context.newPage()
+   const page3 = await context.newPage()
+
+   await page1.goto('https://www.example.com')
+   await page2.goto('https://www.example.com')
+   await page3.goto('https://www.example.com')
+
+   await.page1.waitForTimeout(5000)
+
+
+ })
+...
+
+
 </pre>
