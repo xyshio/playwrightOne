@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="playwright/style.css" />
+<pre><h1>REST API TESTING</h1>
+
+<h2>package.json</h2>
+- in scriptsL
+
+"scripts": {
+   ...
+   "tests:api": "playwright test --config=api.config.ts --project=Chromium"
+   ...
+  }
+
+<span class="com">In api.config.ts this is properly set=> testDir: 'tests/Api',</span>
+
+<h2>file Api/api.spec.ts</h2>
+
+import { test, expect } from '@playwright/test'
+
+test.describe.parallel('API Testing', () => {
+ const baseUrl = 'https://reqres.in/api'
+
+ test('Simple API Test - Assert Response Status', async ({ <span class="info">request</span> }) => {
+   const response = await request.get(`$(baseUrl)/users/2`)
+   expect(response.status().toBe(200))
+ })
+
+ test('Simple API Test - Assert Invalid Endpoin', async ({ <span class="info">request</span> }) => {
+   const response = await request.get(`$(baseUrl)/users/non-existing-endpoint`)
+   expect(response.status().toBe(404))
+ })
+
+
+})
+
+
+
+
+</pre>
