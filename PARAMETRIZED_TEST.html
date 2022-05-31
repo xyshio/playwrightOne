@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="playwright/style.css" />
+<pre><h1>PARAMETRIZED TEST</h1>
+
+test.describe.only('Tips & Tricks section', () => {
+const people = ['Kris', 'Mike', 'Blodder']
+  for(const name of people) {
+    test(`Running test for ${name}`, async({ page }) => {
+      await page.goto('https://www.zero.webappsecurity.com/index.html')
+      await page.type('#searchTerm', `${name}`)
+      await page.waitForTimeout(3000)
+    })
+  }
+})
+
+</pre>
