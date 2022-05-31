@@ -19,17 +19,48 @@
 - await expect(this.page.locator('#wp-admin-bar-my-account')).toContainText('Witaj')
 - await expect(this.message).toBeVisible()
 - await expect(this.nameInput).toBeEmpty()
+- await expect(locator).toBeChecked([options])
+- await expect(locator).toBeDisabled([options])
+- await expect(locator).toBeEditable([options])
+- await expect(locator).toBeEmpty([options])
+- await expect(locator).toBeEnabled([options])
+- await expect(locator).toBeFocused([options])
+- await expect(locator).toBeHidden([options])
+- await expect(locator).toBeVisible([options])
+- await expect(locator).toContainText(expected[, options])
+- await expect(locator).toHaveAttribute(name, value[, options])
+- await expect(locator).toHaveClass(expected[, options])
+- await expect(locator).toHaveCount(count[, options])
+- await expect(locator).toHaveCSS(name, value[, options])
+- await expect(locator).toHaveId(id[, options])
+- await expect(locator).toHaveJSProperty(name, value[, options])
+- await expect(locator).toHaveScreenshot(name[, options])
+- await expect(locator).toHaveScreenshot([options])
+- await expect(locator).toHaveText(expected[, options])
+- await expect(locator).toHaveValue(value[, options])
+- await expect(locator).not
+- await expect(page).toHaveScreenshot(name[, options])
+- await expect(page).toHaveScreenshot([options])
+- await expect(page).toHaveTitle(titleOrRegExp[, options])
+- await expect(page).toHaveURL(urlOrRegExp[, options])
+- await expect(page).not
+- await expect(apiResponse).toBeOK()
+- await expect(apiResponse).not
+- await expect(screenshot).toMatchSnapshot(name[, options])
+- await expect(screenshot).toMatchSnapshot([options])
+
 ->> const loanAccount = await page.locator('#all_transactions_for_account tbody tr')
 - await expect(loanAccount).toHaveCount(2)
 
 <h2>WAITERS</h2>
 - await page.waitForTimeout(1000)
 
-<h2>ASSERTIONS</h2>
-- await paymentPage.assertSuccessMessage()
-
 <h2>KEYBOARD SIMULATORS</h2>
 - await page.keyboard.press('Backspace')
-
+- await page.keyboard.type('Hello World!');
+- await page.keyboard.press('ArrowLeft');
+- await page.keyboard.down('Shift');
+- await page.keyboard.press('Shift+KeyA');
+- await page.keyboard.insertText('嗨');
 
 </pre>
